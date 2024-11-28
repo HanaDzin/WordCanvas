@@ -1,11 +1,15 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
+
 import { assets } from "../assets/assets";
-import { useState } from "react";
 
 const Navbar = () => {
-  //to change navbar buttons if user is logged in
-  const [user, setUser] = useState(null);
+  //get the user from context
+  const { user } = useContext(AppContext);
+
   const navigate = useNavigate();
+
   return (
     <div className="flex items-center justify-between py-4">
       <Link to="/">
@@ -15,7 +19,10 @@ const Navbar = () => {
       <div>
         {user ? (
           <div className="flex items-center gap-2 sm:gap-3">
-            <button className="flex items-center gap-2 bg-blue-100 px-4 sm:px-6 py-1.5 sm:py-3 rounded-full hover:scale-105 transition-all duration-400">
+            <button
+              onClick={() => navigate("/buycredit")}
+              className="flex items-center gap-2 bg-blue-100 px-4 sm:px-6 py-1.5 sm:py-3 rounded-full hover:scale-105 transition-all duration-400"
+            >
               <img src={assets.credit_star} alt="star" className="w-5" />
               <p className="text-sm font-medium text-gray-600">
                 Credits Left: 10
@@ -30,7 +37,9 @@ const Navbar = () => {
               />
               <div className="absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12">
                 <ul className="list-none m-0 p-2 bg-white rounded-md border text-sm">
-                  <li className="py-1 px-2 cursor-pointer pr-10 hover:scale-105">Logout</li>
+                  <li className="py-1 px-2 cursor-pointer pr-10 hover:scale-105">
+                    Logout
+                  </li>
                 </ul>
               </div>
             </div>
