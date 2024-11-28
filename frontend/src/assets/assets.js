@@ -79,21 +79,21 @@ export const testimonialsData = [
     name: "Donald Jackman",
     role: "Graphic Designer",
     stars: 5,
-    text: `I've been using bg.removal for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.`,
+    text: ` Every since my friend introduced me to WordCanvas, all of my projects have become more unique and creative.`,
   },
   {
     image: profile_img_2,
     name: "Richard Nelson",
     role: "Content Creator",
-    stars: 5,
-    text: `I've been using bg.removal for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.`,
+    stars: 4,
+    text: `Ever since I saw an ad showcasing WordCanvas, it's been one of my bare necessities when it comes to editing content.`,
   },
   {
     image: profile_img_3,
     name: "Donald Jackman",
     role: " Graphic Designer",
     stars: 5,
-    text: `I've been using bg.removal for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.`,
+    text: `WordCanvas makes all my visions come to life in a matter of seconds. Never seen anything quite so unique and easy to use.`,
   },
 ];
 

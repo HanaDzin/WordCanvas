@@ -11,9 +11,9 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex items-center justify-between py-4">
+    <div className="flex items-center justify-between py-2">
       <Link to="/">
-        <img src={assets.logo} alt="logo" className="w-24 sm:w-32 lg:w-36" />
+        <img src={assets.logo} alt="logo" className="w-30 sm:w-36 lg:w-38 hover:scale-110 transition-all duration-300" />
       </Link>
 
       <div>
