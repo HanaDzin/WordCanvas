@@ -66,6 +66,13 @@ export const stepsData = [
   },
 ];
 
+export const sampleImgs = [
+  sample_img_1,
+  sample_img_2,
+  sample_img_3,
+  sample_img_4,
+];
+
 export const testimonialsData = [
   {
     image: profile_img_1,
