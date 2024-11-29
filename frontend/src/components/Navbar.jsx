@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <div className="flex items-center justify-between py-2">
       <Link to="/">
-        <img src={assets.logo} alt="logo" className="w-30 sm:w-36 lg:w-38 hover:scale-110 transition-all duration-300" />
+        <img src={assets.logo} alt="logo" className="w-[150px] lg:w-40 hover:scale-110 transition-all duration-300" />
       </Link>
 
       <div>
