@@ -6,14 +6,18 @@ import { assets } from "../assets/assets";
 
 const Navbar = () => {
   //get the user from context
-  const { user } = useContext(AppContext);
+  const { user, setShowLogin } = useContext(AppContext);
 
   const navigate = useNavigate();
 
   return (
     <div className="flex items-center justify-between py-2">
       <Link to="/">
-        <img src={assets.logo} alt="logo" className="w-[150px] lg:w-40 hover:scale-110 transition-all duration-300" />
+        <img
+          src={assets.logo}
+          alt="logo"
+          className="w-[150px] lg:w-40 hover:scale-110 transition-all duration-300"
+        />
       </Link>
 
       <div>
@@ -38,7 +42,7 @@ const Navbar = () => {
               <div className="absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12">
                 <ul className="list-none m-0 p-2 bg-white rounded-md border text-sm">
                   <li className="py-1 px-2 cursor-pointer pr-10 hover:scale-105">
-                    Logout
+                    Log Out
                   </li>
                 </ul>
               </div>
@@ -52,7 +56,10 @@ const Navbar = () => {
             >
               Pricing
             </p>
-            <button className="bg-zinc-800 text-white rounded-full px-7 py-2 sm:px-10 text-sm">
+            <button
+              onClick={() => setShowLogin(true)}
+              className="bg-zinc-800 text-white rounded-full px-7 py-2 sm:px-10 text-sm"
+            >
               Login
             </button>
           </div>
