@@ -64,4 +64,22 @@ const loginUser = async (req, res) => {
   }
 };
 
-export { loginUser, registerUser };
+const userCredits = async (req, res) => {
+  try {
+    //find the user - via id found in a token by auth middleware
+    const { userId } = req.body;
+    const user = await User.findById(userId);
+
+    //send that user's credit back
+    res.json({
+      success: true,
+      credits: user.creditBalance,
+      user: { name: user.name },
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+export { loginUser, registerUser, userCredits };
