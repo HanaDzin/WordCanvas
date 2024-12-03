@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { motion } from "motion/react";
 import { assets } from "../assets/assets";
+import { AppContext } from "../context/AppContext";
 
 const Result = () => {
   const [image, setImage] = useState(assets.main_img);
@@ -8,7 +9,24 @@ const Result = () => {
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState("");
 
-  const handleSubmit = async (e) => {};
+  const { generateImage } = useContext(AppContext);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    if (input) {
+      const image = await generateImage(input);
+
+      if (image) {
+        setIsImageLoaded(true);
+        setImage(image);
+      }
+    }
+
+    setLoading(false);
+  };
 
   return (
     <motion.form

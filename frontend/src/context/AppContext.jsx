@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export const AppContext = createContext();
@@ -17,6 +18,8 @@ export default function AppContextProvider({ children }) {
   //to make backend url accessible in whole app
   const backendURL = import.meta.env.VITE_BACKEND_URL;
 
+  const navigate = useNavigate();
+
   const loadCreditsData = async () => {
     try {
       const { data } = await axios.get(backendURL + "/api/user/credits", {
@@ -29,6 +32,30 @@ export default function AppContextProvider({ children }) {
       }
     } catch (error) {
       console.log(error);
+      toast.error(error.message);
+    }
+  };
+
+  const generateImage = async (prompt) => {
+    try {
+      const { data } = await axios.post(
+        backendURL + "/api/image/generate-image",
+        { prompt },
+        { headers: { token } }
+      );
+
+      if (data.success) {
+        loadCreditsData(); //to show the user credit
+        return data.resultImage; //image we get from the API
+      } else {
+        toast.error(data.message);
+
+        loadCreditsData();
+        if (data.creditBalance === 0) {
+          navigate("/buycredit");
+        }
+      }
+    } catch (error) {
       toast.error(error.message);
     }
   };
@@ -56,6 +83,7 @@ export default function AppContextProvider({ children }) {
     setCredit,
     backendURL,
     loadCreditsData,
+    generateImage,
     logout,
   };
 
