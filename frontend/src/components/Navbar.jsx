@@ -6,7 +6,7 @@ import { assets } from "../assets/assets";
 
 const Navbar = () => {
   //get the user from context
-  const { user, setShowLogin } = useContext(AppContext);
+  const { user, setShowLogin, logout, credit } = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -29,10 +29,10 @@ const Navbar = () => {
             >
               <img src={assets.credit_star} alt="star" className="w-5" />
               <p className="text-sm font-medium text-gray-600">
-                Credits Left: 10
+                Credits Left: {credit}
               </p>
             </button>
-            <p className="text-gray-600 max-sm:hidden pl-4">Hi, User!</p>
+            <p className="text-gray-600 max-sm:hidden pl-4">Hi, {user.name}!</p>
             <div className="relative group">
               <img
                 src={assets.profile_icon}
@@ -41,7 +41,10 @@ const Navbar = () => {
               />
               <div className="absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12">
                 <ul className="list-none m-0 p-2 bg-white rounded-md border text-sm">
-                  <li className="py-1 px-2 cursor-pointer pr-10 hover:scale-105">
+                  <li
+                    onClick={logout}
+                    className="py-1 px-2 cursor-pointer pr-4  hover:scale-105 w-full whitespace-nowrap"
+                  >
                     Log Out
                   </li>
                 </ul>

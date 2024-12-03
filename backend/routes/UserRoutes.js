@@ -14,6 +14,6 @@ userRouter.post("/register", registerUser);
 userRouter.post("/login", loginUser);
 
 //userId for checking the balance is retrieved from the middleware
-userRouter.post("/credits", userAuth, userCredits);
+userRouter.get("/credits", userAuth, userCredits);
 
 export default userRouter;
